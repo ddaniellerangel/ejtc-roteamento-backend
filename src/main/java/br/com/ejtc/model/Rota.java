@@ -28,8 +28,11 @@ public class Rota implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codRota;
 	
-	@NotNull(message = "Data da Dentrega deve ser preenchida")
+	@NotNull(message = "Data da Entrega deve ser preenchida")
     @JsonFormat(pattern = "yyyy-MM-dd")
 	private Date data;
+	
+	@NotNull(message = "Nome da Entrega deve ser preenchido")
+	private String nome;
 
 }

@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import br.com.ejtc.model.Entrega;
+import br.com.ejtc.model.Rota;
 import br.com.ejtc.repositories.EntregaRepository;
 
 @Service
@@ -55,5 +56,9 @@ public class EntregaService {
         } catch (final DataIntegrityViolationException e) {
             throw new DataIntegrityViolationException("Erro ao excluír Entrega!");
         }
+    }
+    
+    public Collection<Entrega> findByRota(Rota rota) {
+        return repository.findByRota(rota);
     }
 }

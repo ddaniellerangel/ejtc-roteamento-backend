@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ejtc.model.Entrega;
+import br.com.ejtc.model.Rota;
 import br.com.ejtc.services.EntregaService;
 import br.com.ejtc.services.exceptions.ConstraintException;
 
@@ -58,4 +59,12 @@ public class EntregaController {
         service.delete(codEntrega);
         return ResponseEntity.noContent().build();
     }
+    
+    @RequestMapping(value="/findByRota/{codRota}", method=RequestMethod.GET)
+	public ResponseEntity<Collection<Entrega>> findByRota(@PathVariable Integer codRota) {
+		Rota obj = new Rota();
+		obj.setCodRota(codRota);
+		Collection<Entrega> collection = service.findByRota(obj);
+		return ResponseEntity.ok().body(collection);
+	}
 }
